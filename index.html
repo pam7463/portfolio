@@ -24,6 +24,8 @@
   <meta name="Author" content="Mr. hong">
 
   <title>홍길동 웹포트폴리오</title>
+  <!-- css reset -->
+  <link rel="stylesheet" href="./css/reset.css">
   <!-- 파비콘 -->
   <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
   <!-- 프레픽스프리(크로스브라우징) -->
@@ -38,6 +40,44 @@
   <script src="./js/full.js"></script>
   <!-- skip menu -->
   <link rel="stylesheet" href="./css/skip_menu.css">
+  <style>
+    /* 기본스타일(모바일) */
+    .clearfix::after{
+      content:'';
+      display:block;
+      clear:both;
+    }
+    .container{padding:0 15px;}
+    header{
+      position:fixed;
+      left:0;
+      top:0;
+      z-index:500;
+      background-color:#fff;
+      width:100%;
+    }
+    
+    header h1{
+      float:left;
+    }
+    header .ham_burger{
+      float:right;
+    }
+
+    #fullpage>.section{padding-top:100px;}
+    .box{width:100px;height:100%;background-color:red;}
+   
+
+
+    /* 테블릿 스타일(768px 이상) */
+    @media(min-width:768px){
+      /* .ham_burger{display:none;} */
+      /* nav{display:block;} */
+    }
+  </style>
+
+
+
 </head>
 <body>
   <div class="skip_menu">
@@ -49,12 +89,27 @@
   </div>
   <div class="wrap">
     <header id="header">
-      
+      <div class="container">
+        <div class="row clearfix">
+          <h1><a href="#">로고</a></h1>
+          <div class="ham_burger">
+            <i class="fa fa-bars" aria-hidden="true"></i>
+          </div>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="#intro">home</a></li>
+            <li><a href="#about">about</a></li>
+            <li><a href="#skill">skill</a></li>
+            <li><a href="#portfolio">portfolio</a></li>
+            <li><a href="#call_me">call me</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
     <section class="main_section">
       <div id="fullpage">
         <div class="section">
-          시작
         </div>
         <div class="section">
           소개
@@ -70,7 +125,9 @@
         </div>
       </div>
     </section>
-    <footer></footer>
+    <footer>
+
+    </footer>
   </div>
         
 </body>
