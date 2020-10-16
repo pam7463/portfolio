@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 오픈그래픽 -->
+  <meta property="og:url" content="https://pam7463.github.io/portfolio/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="홍길동 웹포트폴리오">
+  <meta property="og:image" content="https://pam7463.github.io/img_c_h_1.jpg">
+  <meta property="og:description" content="오늘만 살자는 웹퍼블리셔">
+  <meta name="twitter:card" content="summary"> 
+  <meta name="twitter:title" content="홍길동 웹포트폴리오"> 
+  <meta name="twitter:url" content="https://pam7463.github.io/portfolio/">
+  <meta name="twitter:image" content="https://pam7463.github.io/img_c_h_1.jpg"> 
+  <meta name="twitter:description" content="오늘만 살자는 웹퍼블리셔"/>
+
+  <!-- 문서/작성자 정보 -->
+  <meta name="Date" content="2020-10-15">
+  <meta name="Keywords" content="html, css3, javascript, jquery, portfolio, plug-in">
+  <meta name="Description" content="오늘만 살자는 웹퍼블리셔">
+  <meta name="Author" content="Mr. hong">
+  
+  <title>Document</title>
+
+  <!-- css reset -->
+  <link rel="stylesheet" href="./css/reset.css">
+  <!-- 파비콘 -->
+  <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+  <!-- 프레픽스프리(크로스브라우징) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+  <!-- jquery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- 폰트아섬 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
+  
+  <style>
+    
+     html,body{
+      position: relative;
+      height: 100%;
+    }
+    .wrap{
+      height:100%;
+    }
+
+    .swiper-container {
+      width: 100%;
+      height: 100%;
+    }
+
+    
+  </style>
+
+</head>
+<body>
+  <div class="wrap">
+    <!-- Swiper -->
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide" id="intro">intro</div>
+        <div class="swiper-slide" id="about">about</div>
+        <div class="swiper-slide" id="skill">skill</div>
+        <div class="swiper-slide" id="portfolio">portfolio</div>
+        <div class="swiper-slide" id="call_me">call me</div>
+      </div>
+      <!-- Add Pagination -->
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+  <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+  <script>
+     var swiper = new Swiper('.swiper-container', {
+        direction: 'vertical',
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+      });
+  </script>
+
+</body>
+</html>
+
