@@ -35,9 +35,9 @@
   <!-- 폰트아섬 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- 풀페이지 -->
-  <link rel="stylesheet" href="./css/fullpage.min.css">
+  <!-- <link rel="stylesheet" href="./css/fullpage.min.css">
   <script src="./js/fullpage.min.js"></script>
-  <script src="./js/full.js"></script>
+  <script src="./js/full.js"></script> -->
   <!-- skip menu -->
   <link rel="stylesheet" href="./css/skip_menu.css">
   <style>
@@ -63,8 +63,44 @@
     header .ham_burger{
       float:right;
     }
+    .main_nav{
+      width:0;
+      height:80vh;
+      overflow:hidden;
+      background-color:magenta;
+      position:fixed;
+      right:0;
+      bottom:0;
+      transition:0.3s;
+    }
+    .main_nav.active{
+      width:100vw;
+    }
+    #tgl_menu{transition:0.3s;}
+    #tgl_menu.active{
+      transform:rotate(180deg);
+    }
 
-    #fullpage>.section{padding-top:100px;}
+    #fullpage>.section{
+      width:100vw;
+      height:100vh;
+      padding-top:100px;
+    }
+    #fullpage>.section:nth-child(1){
+      background-color:black;
+    }
+    #fullpage>.section:nth-child(2){
+      background-color:red;
+    }
+    #fullpage>.section:nth-child(3){
+      background-color:green;
+    }
+    #fullpage>.section:nth-child(4){
+      background-color:blue;
+    }
+    #fullpage>.section:nth-child(5){
+      background-color:yellow;
+    }
     .box{width:100px;height:100%;background-color:red;}
    
 
@@ -93,10 +129,13 @@
         <div class="row clearfix">
           <h1><a href="#">로고</a></h1>
           <div class="ham_burger">
-            <i class="fa fa-bars" aria-hidden="true"></i>
+            <i id='tgl_menu' class="fa fa-plus" aria-hidden="true"></i>
           </div>
         </div>
-        <nav>
+        <nav class="main_nav">
+          <div id="close_menu">
+            <i id="close_btn" class="fa fa-times" aria-hidden="true"></i>
+          </div>
           <ul>
             <li><a href="#intro">home</a></li>
             <li><a href="#about">about</a></li>
@@ -109,26 +148,39 @@
     </header>
     <section class="main_section">
       <div id="fullpage">
-        <div class="section">
+        <div class="section" id="intro">
         </div>
-        <div class="section">
+        <div class="section" id="about">
           소개
         </div>
-        <div class="section">
+        <div class="section" id="skill">
           기술
         </div>
-        <div class="section">
+        <div class="section" id="portfolio">
           작품집
         </div>
-        <div class="section">
+        <div class="section" id="call_me">
           연락해
-        </div>
+        </div> 
       </div>
     </section>
     <footer>
 
     </footer>
   </div>
-        
+  <script>
+    window.onload=function(){
+
+    }
+    $(function(){
+      $('#tgl_menu').click(function(){
+        $('.main_nav').toggleClass('active');
+        $(this).toggleClass('active');
+      })
+      $('#close_btn').click(function(){
+        $('.main_nav').removeClass('active');
+      })
+    })
+  </script>        
 </body>
 </html>
