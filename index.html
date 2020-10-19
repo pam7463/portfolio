@@ -47,6 +47,22 @@
       height:100%;
     }
 
+    header{
+      width:100%;
+      height:0;
+      background-color: black;
+      position:fixed;
+      left:0;
+      top:0;
+      z-index:1000;
+      overflow: hidden;
+      transition:0.3s;
+    }
+    header.active{
+      height:100px;
+    }
+
+
     .swiper-container {
       width: 100%;
       height: 100%;
@@ -70,35 +86,57 @@
      background-color:red;
      height:300px;
     }   
+    #intro{background-color:orange;}
+    #skill{background-color:aquamarine;}
+    #call_me{background-color:steelblue;}
+
+    footer{
+      width:100%;
+      height:0;
+      background-color:red;
+      position:fixed;
+      left:0;
+      bottom:0;
+      z-index:1000;
+      transition:0.3s;
+    }
+    footer.active{
+      height:160px;
+    }
   </style>
 
 </head>
 <body>
   <div class="wrap">
-    <!-- Swiper -->
-    <div class="swiper-container">
+    <!-- header section -->
+    <header></header>
+
+    <!-- Swiper section -->
+    <section class="swiper-container">
       <div class="swiper-wrapper">
-        <div class="swiper-slide" id="intro">intro</div>
-        <div class="swiper-slide" id="about">about</div>
-        <div class="swiper-slide" id="skill">skill</div>
-        <div class="swiper-slide" id="portfolio">
+        <div class="swiper-slide slide_level01" id="intro">intro</div>
+        <div class="swiper-slide slide_level01" id="about">about</div>
+        <div class="swiper-slide slide_level01" id="skill">skill</div>
+        <div class="swiper-slide slide_level01" id="portfolio">
           portfolio
           <div class="swiper-container1">
             <div class="swiper-wrapper">
-              <div class="swiper-slide">작품1</div>
-              <div class="swiper-slide">작품2</div>
-              <div class="swiper-slide">작품3</div>
-              <div class="swiper-slide">작품4</div>
-              <div class="swiper-slide">작품5</div>
+              <div class="swiper-slide slide_level02">작품1</div>
+              <div class="swiper-slide slide_level02">작품2</div>
+              <div class="swiper-slide slide_level02">작품3</div>
+              <div class="swiper-slide slide_level02">작품4</div>
+              <div class="swiper-slide slide_level02">작품5</div>
             </div>
           </div>
         </div>
-        <div class="swiper-slide" id="call_me">call me</div>
+        <div class="swiper-slide slide_level01" id="call_me">call me</div>
       </div>
       <!-- Add Pagination -->
       <div class="swiper-pagination"></div>
+    </section>
 
-    </div>
+    <!-- footer section -->
+    <footer></footer>
   </div>
   <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
   <script>
@@ -115,6 +153,25 @@
         slidesPerView:2.5,
         spaceBetween:30,
       });
+      
+      
+      var setRoop = setInterval(function(){
+        var activeIndex = $('.slide_level01.swiper-slide-active').index();
+        if(activeIndex<=1){
+          $('header').addClass('active');
+        }else{
+          $('header').removeClass('active');
+        }
+        if(activeIndex>=3){
+          $('footer').addClass('active');
+        }else{
+          $('footer').removeClass('active');
+        }
+      },1);
+
+     
+     
+
   </script>
 
 </body>
