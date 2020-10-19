@@ -60,9 +60,8 @@
       nav{width:0;height:100vh;background-color:#000000;position:fixed;right:0;top:0;overflow: hidden;transition:0.3s;}
       nav.active{width:100vw;}
       nav>ul{padding:30px 15px;}
-      nav>ul>li{border-bottom:1px solid #ffffff;padding:20px 0;cursor:pointer;}
-      nav>ul>li:first-child{text-align:right;}
-      nav a{color:#ffffff;font-size:1.2rem;}
+      nav>ul>li{border-bottom:1px solid #ffffff;padding:20px 0;cursor:pointer;color:#ffffff;font-size:1.2rem;}
+      nav>ul>li:first-child{text-align:right;}      
 
       .swiper-container {width: 100%;height: 100%;}    
       .swiper-container-vertical > .swiper-pagination-bullets{right:50px;}
@@ -78,6 +77,9 @@
       #portfolio,#call_me{padding-bottom:160px;}
       #call_me{background-color:steelblue;}
 
+      .btn_top{position:fixed;right:20%;bottom:30%;z-index:10000;opacity: 0.05;transition:0.3s;cursor: pointer;}
+      .btn_top:hover{opacity:1;}
+
       footer{width:100%;height:0;position:fixed;left:0;bottom:0;z-index:1000;transition:0.3s;}
       footer.active{height:160px;}
     }
@@ -91,8 +93,17 @@
     /* PC 스타일 */
 
     @media(min-width:1024px){
-      .container{width:60%;}
+      .container{width:100%;}
+      header .container{height:100px;width:100%;display:flex;justify-content: space-between;align-items: center;}
+      .btn_ham{display:none;}
+      nav{width:80%;height:100px;position:static;background-color:transparent;}
+      nav>ul{text-align:right;padding:0;padding-top:16px;}
+      nav>ul>li{display:inline-block;margin-left:20px;color:#000000;}
+      nav>ul>li:first-child{display:none;}
+      nav>ul>li:hover,nav>ul>li.setcolor{color:teal;}
+      
     }
+    
   </style>
 
 </head>
@@ -111,12 +122,12 @@
         </div>
         <nav>
           <ul>
-            <li><a href="#"><i class="fa fa-times fa-2x" aria-hidden="true"></i></a></li>
-            <li><a href="#intro">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skill">Skill</a></li>
-            <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#call_me">Call Me</a></li>
+            <li><i class="fa fa-times fa-2x" aria-hidden="true"></i></li>
+            <li>Home</li>
+            <li>About</li>
+            <li>Skill</li>
+            <li>Portfolio</li>
+            <li>Call Me</li>
           </ul>
         </nav>
       </div>
@@ -164,6 +175,10 @@
       <div class="swiper-pagination"></div>
     </section>
 
+    <aside class="btn_top">
+      <i class="fa fa-arrow-up fa-5x" aria-hidden="true"></i>
+    </aside>
+
     <!-- footer section -->
     <footer>
       <div class="container">
@@ -182,7 +197,7 @@
         keyboard:true,
         mousewheel:true,        
       });
-      var swiper = new Swiper('.swiper-container1',{
+      var swiper1 = new Swiper('.swiper-container1',{
         slidesPerView:2.5,
         spaceBetween:30,
       });
@@ -203,28 +218,21 @@
           $('footer').removeClass('active');
         }
       },1);
-
-      // function intHeightHeader(){
-      //   var headerHeight = $('header').height();
-      //   $('#intro,#about').css({
-      //     'padding-top':headerHeight,
-      //     'box-sizing':'border-box'
-      //   });
-      // }
-      // function intHeightFooter(){
-      //   var footerHeight = $('footer').height();
-      //   $('#portfolio,#call_me').css({
-      //     'padding-bottom':footerHeight,
-      //     'box-sizing':'border-box'
-      //   });
-      // }
      
       $('.btn_ham').on('click',function(){
         $('nav').addClass('active');
       });
 
-      $('nav>ul>li>a').on('click',function(){
+      $('nav>ul>li').on('click',function(){
         $('nav').removeClass('active');
+        var activeIndex=$(this).index();
+        swiper.slideTo(activeIndex-1);
+        $('nav>ul>li').removeClass('setcolor');
+        $(this).addClass('setcolor');
+      })
+
+      $('.btn_top').on('click',function(){
+        swiper.slideTo(0,800);
       })
   </script>
 
