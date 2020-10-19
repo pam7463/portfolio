@@ -48,21 +48,21 @@
       *{box-sizing:border-box;}
       html,body{position: relative;height: 100%;}
       .wrap{display:block;height:100%;}
-      .container{width:100%;height:100%;margin:0 auto;padding:0 15px;background-color:red;max-width:1200px;}
+      .container{width:100%;height:100%;margin:0 auto;padding:0 15px;max-width:1200px;}
 
-      header{width:100%;height:0;border-bottom:1px solid black;position:fixed;left:0;top:0;z-index:1000;overflow: hidden;transition:0.3s;}
+      header{width:100%;height:0;border-bottom:1px solid black;position:fixed;left:0;top:0;z-index:1000;overflow: hidden;transition:0.3s;background-color:#ffffff;}
       header.active{height:100px;}
       header .row{width:100%;height:100px;display:flex;justify-content:space-between;align-items:center;}
       .main_logo{font-family: 'Sansita Swashed', cursive;font-size:2rem;}
       .btn_ham{cursor: pointer;}
-      .btn_ham::before,.btn_ham::after{
-        content:'';
-        display:block;
-        width:30px;
-        height:6px;
-        background-color:#000000;
-      }
+      .btn_ham::before,.btn_ham::after{content:'';display:block;width:30px;height:6px;background-color:#000000;}
       .btn_ham>span{display:block;width:30px;height:6px;background-color:#000000;text-indent:-99999px;margin:9px 0;}
+      nav{width:0;height:100vh;background-color:#000000;position:fixed;right:0;top:0;overflow: hidden;transition:0.3s;}
+      nav.active{width:100vw;}
+      nav>ul{padding:30px 15px;}
+      nav>ul>li{border-bottom:1px solid #ffffff;padding:20px 0;cursor:pointer;}
+      nav>ul>li:first-child{text-align:right;}
+      nav a{color:#ffffff;font-size:1.2rem;}
 
       .swiper-container {width: 100%;height: 100%;}    
       .swiper-container-vertical > .swiper-pagination-bullets{right:50px;}
@@ -108,7 +108,17 @@
           <div class="btn_ham">
             <span>라인</span>
           </div>
-        </div>        
+        </div>
+        <nav>
+          <ul>
+            <li><a href="#"><i class="fa fa-times fa-2x" aria-hidden="true"></i></a></li>
+            <li><a href="#intro">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skill">Skill</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#call_me">Call Me</a></li>
+          </ul>
+        </nav>
       </div>
     </header>
 
@@ -209,7 +219,13 @@
       //   });
       // }
      
+      $('.btn_ham').on('click',function(){
+        $('nav').addClass('active');
+      });
 
+      $('nav>ul>li>a').on('click',function(){
+        $('nav').removeClass('active');
+      })
   </script>
 
 </body>
