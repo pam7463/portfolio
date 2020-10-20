@@ -48,7 +48,9 @@
       *{box-sizing:border-box;}
       html,body{position: relative;height: 100%;}
       .wrap{display:block;height:100%;}
-      .container{width:100%;height:100%;margin:0 auto;padding:0 15px;max-width:1200px;}
+      .container{width:100%;height:100%;margin:0 auto;padding:0 15px;max-width:1200px;overflow:hidden;}
+
+
 
       header{width:100%;height:0;border-bottom:1px solid black;position:fixed;left:0;top:0;z-index:1000;overflow: hidden;transition:0.3s;background-color:#ffffff;}
       header.active{height:100px;}
@@ -63,31 +65,38 @@
       nav>ul>li{border-bottom:1px solid #ffffff;padding:20px 0;cursor:pointer;color:#ffffff;font-size:1.2rem;}
       nav>ul>li:first-child{text-align:right;}      
 
+
+
       .swiper-container {width: 100%;height: 100%;}    
       .swiper-container-vertical > .swiper-pagination-bullets{right:50px;}
       .swiper-pagination{background-color:transparent;}
       .swiper-pagination-bullet {width:16px;height:16px;background:black;}
       .swiper-pagination-bullet.swiper-pagination-bullet-active{background:red;opacity:1;}
       .swiper-container-vertical > .swiper-pagination-bullets .swiper-pagination-bullet {margin: 20px 0;}
-      .swiper-container1 .swiper-slide{background-color:red;height:300px;} 
+      .swiper-container1 .swiper-slide{height:300px;width:500px;} 
       .slide_level01{box-sizing:border-box;}  
       #intro,#about{padding-top:100px;}
       #intro{background-color:orange;}
       #skill{background-color:aquamarine;}
       #portfolio,#call_me{padding-bottom:160px;}
       #call_me{background-color:steelblue;}
+      .slide_level01 .container{padding:60px 0;}
+      
+
+
 
       .btn_top{position:fixed;right:20%;bottom:30%;z-index:10000;opacity: 0.05;transition:0.3s;cursor: pointer;}
       .btn_top:hover{opacity:1;}
-
-      footer{width:100%;height:0;position:fixed;left:0;bottom:0;z-index:1000;transition:0.3s;}
-      footer.active{height:160px;}
     }
+
+
 
     /* 테블릿 스타일 */
     @media(min-width:768px){
       .container{width:80%;}
     }
+
+
 
 
     /* PC 스타일 */
@@ -108,6 +117,10 @@
 
 </head>
 <body>
+  <!-- Skip Menu -->
+
+
+
   <div class="wrap">
     <!-- header section -->
     <header>
@@ -138,36 +151,75 @@
       <div class="swiper-wrapper">
         <div class="swiper-slide slide_level01" id="intro">
           <div class="container">
-            intro
+            <h2>Intro</h2>
+            <div class="content">
+              인트로 내용...
+            </div>
           </div>
         </div>
         <div class="swiper-slide slide_level01" id="about">
           <div class="container">
-            about
+            <h2>About</h2>
+            <div class="content">
+              어바웃 내용...
+            </div>
           </div>
         </div>
         <div class="swiper-slide slide_level01" id="skill">
           <div class="container">
-            skill
+            <h2>skill</h2>
+            <div class="content">
+              스킬 내용...
+            </div>
           </div>
         </div>
         <div class="swiper-slide slide_level01" id="portfolio">
           <div class="container">
-            portfolio
-            <div class="swiper-container1">
-              <div class="swiper-wrapper">
-                <div class="swiper-slide slide_level02">작품1</div>
-                <div class="swiper-slide slide_level02">작품2</div>
-                <div class="swiper-slide slide_level02">작품3</div>
-                <div class="swiper-slide slide_level02">작품4</div>
-                <div class="swiper-slide slide_level02">작품5</div>
+            <h2>portfolio</h2>
+            <div class="content">
+              <div class="swiper-container1">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide slide_level02">
+                    <div class="port_content">
+                      <a href="https://pam7463.github.io/indigo/" target="_blank">
+                        <img src="./images/port01.jpg" alt="포트1">
+                      </a>
+                    </div>
+                  </div>
+                  <div class="swiper-slide slide_level02">
+                    <div class="port_content">
+                      <img src="./images/port02.jpg" alt="포트2">
+                      
+                    </div>
+                  </div>
+                  <div class="swiper-slide slide_level02">
+                    <div class="port_content">
+                      <img src="./images/port01.jpg" alt="포트1">                      
+                    </div>
+                  </div>
+                  <div class="swiper-slide slide_level02">
+                    <div class="port_content">
+                      <img src="./images/port02.jpg" alt="포트2">
+                      
+                    </div>
+                  </div>
+                  <div class="swiper-slide slide_level02">
+                    <div class="port_content">
+                      <img src="./images/port01.jpg" alt="포트1">
+                      
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
         <div class="swiper-slide slide_level01" id="call_me">
           <div class="container">
-            call me
+            <h2>call me</h2>
+            <div class="content">
+              콜미 내용...
+            </div>
           </div>
         </div>
       </div>
@@ -175,17 +227,12 @@
       <div class="swiper-pagination"></div>
     </section>
 
+    <!-- Top Button -->
     <aside class="btn_top">
       <i class="fa fa-arrow-up fa-5x" aria-hidden="true"></i>
     </aside>
-
-    <!-- footer section -->
-    <footer>
-      <div class="container">
-        footer
-      </div>
-    </footer>
   </div>
+
   <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
   <script>
      var swiper = new Swiper('.swiper-container', {
@@ -198,8 +245,10 @@
         mousewheel:true,        
       });
       var swiper1 = new Swiper('.swiper-container1',{
-        slidesPerView:2.5,
+        // 기본슬라이더
+        slidesPerView:'auto',
         spaceBetween:30,
+
       });
       
       
@@ -210,12 +259,6 @@
           // intHeightHeader();
         }else{
           $('header').removeClass('active');
-        }
-        if(activeIndex>=3){
-          $('footer').addClass('active');
-          // intHeightFooter();
-        }else{
-          $('footer').removeClass('active');
         }
       },1);
      
